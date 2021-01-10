@@ -1,0 +1,13 @@
+.ui .computer .item.active {
+  background: #f3f5f3;
+  color: rgb(12, 12, 12);
+  border-bottom: 1px solid #fff;
+  margin-left: 400px;
+}
+
+/* .ui .computer .item.active:hover {
+  background: #f9faf9;
+  color: rgb(12, 12, 12);
+  border-bottom: 1px solid #fff;
+  margin-left: 500px;
+} */
