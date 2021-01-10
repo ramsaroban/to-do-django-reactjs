@@ -31,7 +31,7 @@ export const getBuckets = () => async dispatch => {
 export const getBucket = id => async dispatch => {
     await axios({
         method: 'get',
-        url: `http://ramsaroban.pythonanywhere.com/api/my-bucket/${id}`,
+        url: `https://ramsaroban.pythonanywhere.com/api/my-bucket/${id}`,
         headers: {
             'Content-type': 'application/json'
         }
@@ -47,7 +47,7 @@ export const getBucket = id => async dispatch => {
 export const addBucket = formValues => async dispatch => {
     await axios({
         method: 'post',
-        url: 'http://ramsaroban.pythonanywhere.com/api/my-bucket/',
+        url: 'https://ramsaroban.pythonanywhere.com/api/my-bucket/',
         data: {
             "bucket_name": formValues.bucket_name,
             "description": formValues.description,
@@ -70,7 +70,7 @@ export const addBucket = formValues => async dispatch => {
 export const editBucket = (id, formValues, is_marked = 'No') => async dispatch => {
     await axios({
         method: 'patch',
-        url: `http://ramsaroban.pythonanywhere.com/api/my-bucket/${id}/`,
+        url: `https://ramsaroban.pythonanywhere.com/api/my-bucket/${id}/`,
         data: {
             "bucket_name": formValues.bucket_name,
             "description": formValues.description,
@@ -92,7 +92,7 @@ export const editBucket = (id, formValues, is_marked = 'No') => async dispatch =
 export const deleteBucket = id => async dispatch => {
     await axios({
         method: 'delete',
-        url: `http://ramsaroban.pythonanywhere.com/api/my-bucket/${id}`,
+        url: `https://ramsaroban.pythonanywhere.com/api/my-bucket/${id}`,
         headers: {
             'Content-type': 'applicaiton/json'
         }
