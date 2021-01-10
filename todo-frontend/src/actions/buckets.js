@@ -13,7 +13,7 @@ import {
 export const getBuckets = () => async dispatch => {
     await axios({
         method: 'get',
-        url: 'http://ramsaroban.pythonanywhere.com/api/my-bucket/',
+        url: 'https://ramsaroban.pythonanywhere.com/api/my-bucket/',
         headers: {
             'Content-type': 'application/json'
         }

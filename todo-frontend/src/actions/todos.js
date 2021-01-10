@@ -12,7 +12,7 @@ import {
 export const getTodos = () => async dispatch => {
     await axios({
         method: 'get',
-        url: 'http://ramsaroban.pythonanywhere.com/api/to-dos/',
+        url: 'https://ramsaroban.pythonanywhere.com/api/to-dos/',
         headers: {
             'Content-type': 'application/json'
         }
@@ -30,7 +30,7 @@ export const getTodos = () => async dispatch => {
 export const getTodo = id => async dispatch => {
     await axios({
         method: 'get',
-        url: `http://ramsaroban.pythonanywhere.com/api/to-dos/${id}`,
+        url: `https://ramsaroban.pythonanywhere.com/api/to-dos/${id}`,
         headers: {
             'Content-type': 'application/json'
         }
@@ -47,7 +47,7 @@ export const getTodo = id => async dispatch => {
 export const addTodo = (bucket_id, formValues) => async dispatch => {
     await axios({
         method: 'post',
-        url: 'http://ramsaroban.pythonanywhere.com/api/to-dos/',
+        url: 'https://ramsaroban.pythonanywhere.com/api/to-dos/',
         data: {
             'bucket': bucket_id,
             "todos_name": formValues.todos_name,
@@ -70,7 +70,7 @@ export const addTodo = (bucket_id, formValues) => async dispatch => {
 export const editTodo = (id, formValues, is_completed = 'No') => async dispatch => {
     await axios({
         method: 'patch',
-        url: `http://ramsaroban.pythonanywhere.com/api/to-dos/${id}/`,
+        url: `https://ramsaroban.pythonanywhere.com/api/to-dos/${id}/`,
         data: {
             "todos_name": formValues.todos_name,
             "is_completed": is_completed
@@ -92,7 +92,7 @@ export const editTodo = (id, formValues, is_completed = 'No') => async dispatch 
 export const deleteTodo = id => async dispatch => {
     await axios({
         method: 'delete',
-        url: `http://ramsaroban.pythonanywhere.com/api/to-dos/${id}`,
+        url: `https://ramsaroban.pythonanywhere.com/api/to-dos/${id}`,
         headers: {
             'Content-type': 'applicaiton/json'
         }
