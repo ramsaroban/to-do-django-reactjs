@@ -84,7 +84,7 @@ export const editTodo = (id, formValues, is_completed = 'No') => async dispatch 
     })).catch(error => {
         alert('Something went wrong!!')
     });
-
+    dispatch(reset('todoForm'));
     history.push('/');
 };
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-
 class TodoForm extends React.Component {
     state = { is_marked: 'No' }
+
 
     renderFields = ({ input, label, meta: { touched, error } }) => {
         return (
@@ -21,11 +21,8 @@ class TodoForm extends React.Component {
     };
 
     onChecked = e => {
-
-
         if (e.target.value) {
             this.setState({ is_marked: 'Yes' })
-
         }
         else {
             this.setState({ is_marked: 'No' })
@@ -63,16 +60,13 @@ class TodoForm extends React.Component {
 const validate = formvalues => {
     const errors = {};
     if (!formvalues.todos_name) {
-        errors.todos_name = 'Please Enter at least 1 characteBucket name can not be more that 20 character.';
+        errors.todos_name = 'Please Enter at least 1 character, Bucket name can not be more that 20 character.';
     }
-
     return errors;
 };
 
 export default reduxForm({
     form: 'todoForm',
     touchOnBlur: false,
-    enableReinitialize: true,
-    noOverwrite: false,
     validate
 })(TodoForm)

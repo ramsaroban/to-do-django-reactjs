@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { addTodo } from '../../actions/todos';
 import TodoForm from './todoForms';
 
-
 class TodoCreate extends React.Component {
 
 
     onSubmit = formvalues => {
-        console.log('aaa', this.props.bucket)
         if (this.props.bucket === 'undefined') {
             alert('Please select any bucket!')
         }

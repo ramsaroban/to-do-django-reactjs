@@ -16,7 +16,6 @@ class TodoEdit extends React.Component {
         this.props.editTodo(this.props.match.params.id, formvalues, is_marked);
     };
     renderActions() {
-        // const { id } = this.props.match.params;
 
         return (
             <TodoForm
@@ -24,8 +23,7 @@ class TodoEdit extends React.Component {
                 action='Edit'
                 initialValues={_.pick(this.props.todo, 'todos_name', 'is_completed')}
                 enableReinitialize
-                onSubmit={this.onSubmit}
-                destroyOnUnmount={false} />
+                onSubmit={this.onSubmit} />
         );
     }
     render() {
