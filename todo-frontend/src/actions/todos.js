@@ -10,43 +10,44 @@ import {
 } from '../actions/types';
 
 export const getTodos = () => async dispatch => {
-    const response = await axios({
+    await axios({
         method: 'get',
-        url: 'http://127.0.0.1:8000/api/to-dos/',
+        url: 'http://ramsaroban.pythonanywhere.com/api/to-dos/',
         headers: {
             'Content-type': 'application/json'
         }
-    }).catch(function (response) {
+    }).then((response) => dispatch({
+        type: GET_TODOS,
+        payload: response.data
+    })).catch(error => {
         alert('Something went wrong!!');
-    });
-    dispatch({ type: GET_TODOS, payload: response.data });
+    })
+
     history.push('/');
 };
 
 
 export const getTodo = id => async dispatch => {
-    const response = await axios({
+    await axios({
         method: 'get',
-        url: `http://127.0.0.1:8000/api/to-dos/${id}`,
+        url: `http://ramsaroban.pythonanywhere.com/api/to-dos/${id}`,
         headers: {
             'Content-type': 'application/json'
         }
-    }).catch(function (response) {
-        alert('Something went wrong!!');
-    });
-
-    dispatch({
+    }).then((response) => dispatch({
         type: GET_TODO,
         payload: response.data
+    })).catch(function (response) {
+        alert('Something went wrong!!');
     });
 
 };
 
 
 export const addTodo = (bucket_id, formValues) => async dispatch => {
-    const response = await axios({
+    await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/api/to-dos/',
+        url: 'http://ramsaroban.pythonanywhere.com/api/to-dos/',
         data: {
             'bucket': bucket_id,
             "todos_name": formValues.todos_name,
@@ -55,21 +56,21 @@ export const addTodo = (bucket_id, formValues) => async dispatch => {
         headers: {
             'Content-type': 'application/json'
         }
-    }).catch(function (response) {
-        alert('Something went wrong!!');
-    });
-    dispatch({
+    }).then(response => dispatch({
         type: ADD_TODO,
         payload: response.data
+    })).catch(error => {
+        alert('Something went wrong!!');
     });
+
     dispatch(reset('todoForm'));
     history.push('/')
 };
 
 export const editTodo = (id, formValues, is_completed = 'No') => async dispatch => {
-    const response = await axios({
+    await axios({
         method: 'patch',
-        url: `http://127.0.0.1:8000/api/to-dos/${id}/`,
+        url: `http://ramsaroban.pythonanywhere.com/api/to-dos/${id}/`,
         data: {
             "todos_name": formValues.todos_name,
             "is_completed": is_completed
@@ -77,13 +78,11 @@ export const editTodo = (id, formValues, is_completed = 'No') => async dispatch 
         headers: {
             'Content-type': 'application/json'
         }
-    }).catch(function (response) {
-        alert('Something went wrong!!')
-    });
-
-    dispatch({
+    }).then(response => dispatch({
         type: EDIT_TODO,
         payload: response.data
+    })).catch(error => {
+        alert('Something went wrong!!')
     });
 
     history.push('/');
@@ -93,17 +92,15 @@ export const editTodo = (id, formValues, is_completed = 'No') => async dispatch 
 export const deleteTodo = id => async dispatch => {
     await axios({
         method: 'delete',
-        url: `http://127.0.0.1:8000/api/to-dos/${id}`,
+        url: `http://ramsaroban.pythonanywhere.com/api/to-dos/${id}`,
         headers: {
             'Content-type': 'applicaiton/json'
         }
-    }).catch(function (response) {
-        alert('Something went wrong!!')
-    });
-
-    dispatch({
+    }).then(dispatch({
         type: DELETE_TODO,
         payload: id
+    })).catch(error => {
+        alert('Something went wrong!!')
     });
     history.push('/');
 };
